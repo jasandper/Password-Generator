@@ -25,7 +25,7 @@ function randomNum() {
   let num = Math.floor(Math.random() * 10);
   return num;
 }
-console.log(randomNum());
+
 
 // Function to generate random lowercase letter
 function randomLower() {
@@ -44,22 +44,54 @@ function randomUpper() {
 }
 
 
+function getCharacterArrays (doYouSpecial,doYouNumeric,doYouLower,doYouUpper) {
+  let array = [];
+  if (doYouSpecial) {
+    array.push(randomSpecial);
+  } 
+  if (doYouNumeric) {
+    array.push(randomNum);
+  }
+  if (doYouUpper) {
+    array.push(randomUpper);
+  }
+  if (doYouLower) {
+    array.push(randomLower);
+  }
+  return array;
+}
+
+
 // Function to generate password
 function generatePassword () {
+  let result = [];
+  
 
   // Gather information from the user
   let passwordLength = prompt("Choose beteen 8 and 128 characters");
-  let doYouSpecial = confirm("Select 'Okay' to use special characters.");
-  let doYouNumeric = confirm("Select 'Okay' to use numeric characters");
+  let doYouSpecial = confirm("Select 'OK' to use special characters.");
+  let doYouNumeric = confirm("Select 'OK' to use numeric characters");
   let doYouLower = confirm("Select 'OK' to use lowercase characters");
   let doYouUpper = confirm("Select 'OK' to use uppercase characters");
 
+  let charArray = getCharacterArrays(doYouSpecial,doYouNumeric,doYouLower,doYouUpper)
+  console.log(charArray);
 
-
- 
-
-return ;
-
+  
+  let randomCharacterLength = passwordLength - charArray.length;
+// Randomly generates a character within the users selections 
+  for (i=0; i < randomCharacterLength; i++) {
+    let randomNumber = Math.floor(Math.random()* charArray.length)
+    result.push(charArray[randomNumber]())
+  }
+// Insures at least one of each character type selection is included in the password
+  for (i=0; i < charArray.length; i++) {
+   
+    
+      result.push(charArray[i]());
+      
+  }
+  return result.join("");
 }
 
 // Add event listener to generate button
