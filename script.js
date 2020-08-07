@@ -62,13 +62,27 @@ function getCharacterArrays (doYouSpecial,doYouNumeric,doYouLower,doYouUpper) {
 }
 
 
+
+
+
 // Function to generate password
 function generatePassword () {
   let result = [];
+  let passwordLength;
   
 
   // Gather information from the user
-  let passwordLength = prompt("Choose beteen 8 and 128 characters");
+  function pwd(){
+  passwordLength = prompt("Choose a password length");
+    if (passwordLength < 8 || passwordLength > 128) {
+    alert("Choose a password length between 8 and 128 characters");
+    pwd();
+  } if (typeof(passwordLength) !== "number") {
+    alert("Please enter a numeric value");
+    pwd();
+  }
+}
+  pwd();
   let doYouSpecial = confirm("Select 'OK' to use special characters.");
   let doYouNumeric = confirm("Select 'OK' to use numeric characters");
   let doYouLower = confirm("Select 'OK' to use lowercase characters");
@@ -92,6 +106,7 @@ function generatePassword () {
       
   }
   return result.join("");
+
 }
 
 // Add event listener to generate button
