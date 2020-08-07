@@ -1,5 +1,19 @@
 # Password-Generator
 
+For this application the objective was to generate a random password based on some user input. 
+
+* User Input
+- Length of password between 8 and 128 characters.
+- Type of characters the user wants included: special charactesr, numbers, uppercase, and lower case.
+
+* Validation
+Points of validation were to ensure 
+- The user inputs a number between 8 and 128
+- user input is nothing other than a numeric value
+- user chooses at least one character type
+
+Below i've included a bit more detail on some of the functions used in this applictaion:
+
 # Random generator functions 
 - Four functions were created for each respective user character type option to generate a random character for : special characters, numbers, uppercase letters, and lowercase letters. 
 
