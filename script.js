@@ -4,6 +4,7 @@ var generateBtn = document.querySelector("#generate");
 
 
 
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -62,48 +63,53 @@ function getCharacterArrays (doYouSpecial,doYouNumeric,doYouLower,doYouUpper) {
 }
 
 
-
-
-
 // Function to generate password
 function generatePassword () {
   let result = [];
   let passwordLength;
-  
+  let doYouSpecial;
+  let doYouNumeric;
+  let doYouLower;
+  let doYouUpper;
 
-  // Gather information from the user
-  function pwd(){
-  passwordLength = prompt("Choose a password length");
+// Function to gather and Validate input for password length
+function pwdValidate(){
+  passwordLength = parseInt(prompt("Choose a password length"));
     if (passwordLength < 8 || passwordLength > 128) {
-    alert("Choose a password length between 8 and 128 characters");
-    pwd();
-  } if (typeof(passwordLength) !== "number") {
-    alert("Please enter a numeric value");
-    pwd();
+      alert("Choose a password length between 8 and 128 characters");
+      pwdValidate();
+    } 
+    if (isNaN(passwordLength))  {
+      alert("Please enter a numeric value");
+      pwdValidate();
+    }
+  }
+
+// Function to gather and validate user chacter type selection
+function charValidate(){
+  doYouSpecial = confirm("Select 'OK' to use special characters.");
+  doYouNumeric = confirm("Select 'OK' to use numeric characters");
+  doYouLower = confirm("Select 'OK' to use lowercase characters");
+  doYouUpper = confirm("Select 'OK' to use uppercase characters");
+  if (!doYouSpecial && !doYouNumeric && !doYouLower && !doYouUpper) {
+    alert("You must choose at least one character type");
+    charValidate();
   }
 }
-  pwd();
-  let doYouSpecial = confirm("Select 'OK' to use special characters.");
-  let doYouNumeric = confirm("Select 'OK' to use numeric characters");
-  let doYouLower = confirm("Select 'OK' to use lowercase characters");
-  let doYouUpper = confirm("Select 'OK' to use uppercase characters");
 
-  let charArray = getCharacterArrays(doYouSpecial,doYouNumeric,doYouLower,doYouUpper)
-  console.log(charArray);
+pwdValidate();
+charValidate();
 
-  
-  let randomCharacterLength = passwordLength - charArray.length;
-// Randomly generates a character within the users selections 
+// Randomly generates a character within the users selections
+let charArray = getCharacterArrays(doYouSpecial,doYouNumeric,doYouLower,doYouUpper);  
+let randomCharacterLength = passwordLength - charArray.length; 
   for (i=0; i < randomCharacterLength; i++) {
     let randomNumber = Math.floor(Math.random()* charArray.length)
     result.push(charArray[randomNumber]())
   }
 // Insures at least one of each character type selection is included in the password
   for (i=0; i < charArray.length; i++) {
-   
-    
       result.push(charArray[i]());
-      
   }
   return result.join("");
 
