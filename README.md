@@ -15,3 +15,7 @@ Validation: Points of validation were to ensure
 
 https://jasandper.github.io/Password-Generator/
 
+# Screenshot
+
+![Finished App](screenshot.png)
+
