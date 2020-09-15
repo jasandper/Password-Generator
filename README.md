@@ -1,5 +1,9 @@
-# Description
+# Password-Generator
 
+# Technologies used
+- Html, CSS, Javascript
+
+# Description
 For this application the objective was to generate a random password based on some user input. 
 
 User Input
@@ -12,10 +16,11 @@ Validation: Points of validation were to ensure
 - user chooses at least one character type
 
 # Link to Application
-
 https://jasandper.github.io/Password-Generator/
 
 # Screenshot
-
 ![Finished App](screenshot.png)
+
+# Contact information
+Jason Perez jasandper@icloud.com
 
