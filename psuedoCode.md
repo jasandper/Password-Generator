@@ -9,14 +9,14 @@
 * create a function to generate a random lowercase letter
 * createa a function to generate a random uppercase letter
 
-- create a function to generate a password based on user input
-    - create a loop that iterates as many times as user password length
-    - creat a password such that it only considers the users character type selection
+* create a function to generate a password based on user input
+    * create a loop that iterates as many times as user password length
+    * creat a password such that it only considers the users character type selection
 
--  validate user input
-    - Make sure input is a numeric value for password length
-    - Make sure input is between 8 and 128 characters
-    - Make sure at least one character type is selected
+*  validate user input
+    * Make sure input is a numeric value for password length
+    * Make sure input is between 8 and 128 characters
+    * Make sure at least one character type is selected
 
  
 
